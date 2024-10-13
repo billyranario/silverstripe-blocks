@@ -75,19 +75,33 @@ class Accordion extends BaseElement
     }
 
     public function getAccordionItemElements() {
+        return $this->retrieveAccordionItems($this->Elements());
+    }
+
+    /**
+     * Recursively retrieve all accordion items, including nested items.
+     * 
+     * @param ElementalArea $elementalArea
+     * @return ArrayList
+     */
+    private function retrieveAccordionItems($elementalArea) {
         $accordionItemElements = ArrayList::create();
-        $elementalArea = $this->Elements();
-    
+
         if ($elementalArea && $elementalArea->Elements()->exists()) {
             foreach ($elementalArea->Elements() as $element) {
                 $accordionItemElements->push(ArrayData::create([
                     'ID' => $element->ID,
                     'Title' => $element->Title,
-                    'Content' => $element->forTemplate()
+                    'Content' => $element->forTemplate(),
                 ]));
+
+                if ($element instanceof ElementalArea && $element->Elements()->exists()) {
+                    $nestedItems = $this->retrieveAccordionItems($element);
+                    $accordionItemElements->merge($nestedItems); // Add nested items to the list
+                }
             }
         }
-    
+
         return $accordionItemElements;
     }
 

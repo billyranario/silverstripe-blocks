@@ -83,7 +83,6 @@ class Tab extends BaseElement
                 $tabItemElements->push(ArrayData::create([
                     'ID' => $element->ID,
                     'Title' => $element->Title,
-                    'Content' => $element->forTemplate()
                 ]));
             }
         }
