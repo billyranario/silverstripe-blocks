@@ -1,0 +1,10 @@
+
+.tab-content > .thehustle__layout__tabitem:not(:first-child) {
+    display: none;
+}
+.hide {
+    display: none !important;
+}
+.active {
+    display: block !important;
+}
