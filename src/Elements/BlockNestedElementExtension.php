@@ -6,6 +6,8 @@ use DNADesign\ElementalList\Model\ElementList;
 use SilverStripe\CMS\Controllers\CMSPageEditController;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Extension;
+use TheHustle\Layout\Accordion;
+use TheHustle\Layout\AccordionItem;
 use TheHustle\Layout\TabItem;
 use TheHustle\Layout\Tab;
 
@@ -22,7 +24,13 @@ class BlockNestedElementExtension extends Extension
             return;
         }
 
-        if ($page instanceof Tab || $page instanceof TabItem || $page instanceof ElementList) {
+        if (
+            $page instanceof Tab || 
+            $page instanceof TabItem || 
+            $page instanceof Accordion || 
+            $page instanceof AccordionItem || 
+            $page instanceof ElementList
+        ) {
             $link = Controller::join_links(
                 $page->CMSEditLink(),
                 'ItemEditForm/field/' . $page->getOwnedAreaRelationName() . '/item/',
