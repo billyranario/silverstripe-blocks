@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("accordion.js loaded");
-  const accordionItems = document.querySelectorAll('.accordion-title');
+  console.log('accordion.js loaded');
+  const accordionTitles = document.querySelectorAll('.accordion-title');
 
-  accordionItems.forEach(title => {
+  accordionTitles.forEach(title => {
       title.addEventListener('click', function() {
           const targetId = this.getAttribute('data-target');
           const content = document.querySelector(targetId);
+          const icon = this.querySelector('.accordion-icon');
+
+          content.classList.toggle('hidden');
 
           if (content.classList.contains('hidden')) {
-              document.querySelectorAll('.accordion-body').forEach(body => body.classList.add('hidden'));
-              content.classList.remove('hidden');
+              icon.classList.remove('rotate-180');
           } else {
-              content.classList.add('hidden');
+              icon.classList.add('rotate-180');
           }
       });
   });

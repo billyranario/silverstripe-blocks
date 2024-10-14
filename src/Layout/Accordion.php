@@ -104,5 +104,4 @@ class Accordion extends BaseElement
 
         return $accordionItemElements;
     }
-
 }
