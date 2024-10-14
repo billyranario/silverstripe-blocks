@@ -1,0 +1,6 @@
+.rotate-180 {
+    transform: rotate(180deg);
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .3s;
+}

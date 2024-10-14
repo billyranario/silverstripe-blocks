@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
           content.classList.toggle('hidden');
 
           if (content.classList.contains('hidden')) {
-              icon.classList.remove('rotate-180');
+              icon.classList.remove('rotate-icon');
           } else {
-              icon.classList.add('rotate-180');
+              icon.classList.add('rotate-icon');
           }
       });
   });
