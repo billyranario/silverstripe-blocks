@@ -10,6 +10,8 @@ use TheHustle\Layout\Accordion;
 use TheHustle\Layout\AccordionItem;
 use TheHustle\Layout\TabItem;
 use TheHustle\Layout\Tab;
+use TheHustle\Layout\ColumnBlock;
+use TheHustle\Layout\ContainerBlock;
 
 class BlockNestedElementExtension extends Extension
 {
@@ -29,6 +31,8 @@ class BlockNestedElementExtension extends Extension
             $page instanceof TabItem || 
             $page instanceof Accordion || 
             $page instanceof AccordionItem || 
+            $page instanceof ColumnBlock || 
+            $page instanceof ContainerBlock || 
             $page instanceof ElementList
         ) {
             $link = Controller::join_links(
