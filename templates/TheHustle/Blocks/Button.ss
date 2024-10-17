@@ -1,9 +1,9 @@
 <% if $RedirectLink %>
-    <a href="$RedirectLink" class="inline-block {{ $ButtonClass }} {{ $Width }} text-white font-bold transition-colors duration-300 ease-in-out" <% if $OpenNewTab %>target="_blank"<% end_if %>>
+    <a href="$RedirectLink" class="inline-block transition-colors duration-300 ease-in-out $Width rounded-[5px] text-sm $getButtonClass $getButtonColor" <% if $OpenNewTab %>target="_blank"<% end_if %>>
         $ButtonLabel
     </a>
 <% else %>
-    <span class="inline-block {{ $ButtonClass }} {{ $Width }} text-white font-bold transition-colors duration-300 ease-in-out">
+    <span class="inline-block transition-colors duration-300 ease-in-out rounded-[5px] text-sm $getButtonClass $getButtonColor $Width">
         $ButtonLabel
     </span>
 <% end_if %>

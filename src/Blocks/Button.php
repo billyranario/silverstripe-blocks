@@ -15,6 +15,7 @@ class Button extends BaseElement
 
     private static $db = [
         'ButtonLabel' => 'Varchar(255)',
+        'ButtonColor' => 'Enum("primary, secondary, tertiary", "primary")',
         'ButtonClass' => 'Varchar(255)',
         'RedirectLink' => 'Varchar(255)',
         'Width' => 'Enum("w-auto, w-full")',
@@ -22,7 +23,8 @@ class Button extends BaseElement
     ];
 
     private static $defaults = [
-        'ButtonClass' => 'bg-primary hover:bg-primary-dark px-8 py-3',
+        'ButtonClass' => 'px-8 py-3 text-white',
+        'ButtonColor' => 'primary',
         'Width' => 'w-auto'
     ];
 
@@ -34,9 +36,9 @@ class Button extends BaseElement
     public function populateDefaults()
     {
         parent::populateDefaults();
-
-        $this->ButtonClass = 'bg-primary hover:bg-primary-dark px-8 py-3';
+        $this->ButtonClass = 'px-8 py-3 text-white';
         $this->Width = 'w-auto';
+        $this->ButtonColor = 'primary';
     }
 
     public function getCMSFields()
@@ -45,13 +47,20 @@ class Button extends BaseElement
         $fields->removeByName('Title');
 
         $fields->addFieldToTab('Root.Main', TextField::create('ButtonLabel', 'Button Label'));
+
         $fields->addFieldToTab(
             'Root.Main',
-            TextField::create('ButtonClass', 'Button CSS Class')
-                ->setDescription('Default: bg-primary hover:bg-primary-dark px-8 py-3')
-                ->setValue($this->ButtonClass)
+            DropdownField::create('ButtonColor', 'Button Color')
+                ->setSource([
+                    'primary' => 'Primary',
+                    'secondary' => 'Secondary',
+                    'tertiary' => 'Tertiary',
+                ])
+                ->setDescription('Select button color theme')
         );
+
         $fields->addFieldToTab('Root.Main', TextField::create('RedirectLink', 'Redirect Link'));
+
         $fields->addFieldToTab(
             'Root.Main',
             DropdownField::create('Width', 'Button Width')
@@ -62,6 +71,7 @@ class Button extends BaseElement
                 ->setEmptyString('(None)')
                 ->setValue($this->Width)
         );
+
         $fields->addFieldToTab('Root.Main', CheckboxField::create('OpenNewTab', 'Open in a new tab'));
 
         return $fields;
@@ -70,9 +80,32 @@ class Button extends BaseElement
     public function onBeforeWrite()
     {
         parent::onBeforeWrite();
-
         if (!$this->Title || $this->isChanged('ButtonLabel')) {
-            $this->Title = "Button: ". $this->ButtonLabel;
+            $this->Title = "Button: " . $this->ButtonLabel;
         }
+    }
+    
+    public function getButtonClass()
+    {
+        $colorClasses = [
+            'primary' => 'bg-primary hover:bg-primary-dark',
+            'secondary' => 'bg-secondary hover:bg-secondary-dark',
+            'tertiary' => 'bg-tertiary hover:bg-teal-700', // Adjusted hover color for tertiary
+        ];
+
+        $buttonClass = $this->getField('ButtonClass') ?: ''; // Fallback if ButtonClass is not set
+
+        return $buttonClass;
+    }
+    
+    public function getButtoncolor()
+    {
+        $colorClasses = [
+            'primary' => 'bg-primary hover:bg-primary-dark',
+            'secondary' => 'bg-secondary hover:bg-secondary-dark',
+            'tertiary' => 'bg-tertiary hover:bg-teal-700', // Adjusted hover color for tertiary
+        ];
+
+        return $colorClasses[$this->getField('ButtonColor')] ?? 'bg-primary hover:bg-primary-dark';
     }
 }
