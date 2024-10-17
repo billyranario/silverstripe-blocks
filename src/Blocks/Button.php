@@ -57,6 +57,7 @@ class Button extends BaseElement
                     'tertiary' => 'Tertiary',
                 ])
                 ->setDescription('Select button color theme')
+                ->setValue($this->ButtonColor)
         );
 
         $fields->addFieldToTab('Root.Main', TextField::create('RedirectLink', 'Redirect Link'));
@@ -87,18 +88,12 @@ class Button extends BaseElement
     
     public function getButtonClass()
     {
-        $colorClasses = [
-            'primary' => 'bg-primary hover:bg-primary-dark',
-            'secondary' => 'bg-secondary hover:bg-secondary-dark',
-            'tertiary' => 'bg-tertiary hover:bg-teal-700', // Adjusted hover color for tertiary
-        ];
-
         $buttonClass = $this->getField('ButtonClass') ?: ''; // Fallback if ButtonClass is not set
 
         return $buttonClass;
     }
     
-    public function getButtoncolor()
+    public function ColorClass()
     {
         $colorClasses = [
             'primary' => 'bg-primary hover:bg-primary-dark',
