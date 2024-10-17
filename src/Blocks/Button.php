@@ -30,6 +30,8 @@ class Button extends BaseElement
     {
         $fields = parent::getCMSFields();
 
+        $fields->removeByName('Title');
+
         $fields->addFieldToTab('Root.Main', TextField::create('ButtonLabel', 'Button Label'));
         $fields->addFieldToTab(
             'Root.Main',
