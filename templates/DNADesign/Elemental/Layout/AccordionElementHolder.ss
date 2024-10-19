@@ -1,1 +1,1 @@
-Accordion Element Holder
+$Element
