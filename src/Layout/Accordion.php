@@ -43,6 +43,10 @@ class Accordion extends BaseElement
         ElementalAreasExtension::class
     ];
 
+    private static $casting = [
+        'ElementHolderTemplate' => 'HTMLText',
+    ];
+
     public function getType(): string
     {
         return _t(__CLASS__ . '.BlockType', 'Accordion Container');
@@ -105,10 +109,8 @@ class Accordion extends BaseElement
         return $accordionItemElements;
     }
 
-    public function getHolderTemplates()
+    public function ElementHolderTemplate()
     {
-        return [
-            'type' => 'TheHustle/Elemental/AccordionElementHolder'
-        ];
+        return 'TheHustle/Elemental/AccordionElementHolder';
     }
 }

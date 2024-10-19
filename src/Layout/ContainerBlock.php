@@ -46,6 +46,10 @@ class ContainerBlock extends BaseElement
         ElementalAreasExtension::class
     ];
 
+    private static $casting = [
+        'ElementHolderTemplate' => 'HTMLText',
+    ];
+
     public function getType(): string
     {
         return _t(__CLASS__ . '.BlockType', 'Container');
@@ -77,10 +81,8 @@ class ContainerBlock extends BaseElement
         return false;
     }
 
-    public function getHolderTemplates()
+    public function ElementHolderTemplate()
     {
-        return [
-            'type' => 'TheHustle/Elemental/ContainerElementHolder'
-        ];
+        return 'TheHustle/Elemental/ContainerElementHolder';
     }
 }

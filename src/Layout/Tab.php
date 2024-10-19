@@ -43,6 +43,10 @@ class Tab extends BaseElement
         ElementalAreasExtension::class
     ];
 
+    private static $casting = [
+        'ElementHolderTemplate' => 'HTMLText',
+    ];
+
     public function getType(): string
     {
         return _t(__CLASS__ . '.BlockType', 'Tab Container');
@@ -90,10 +94,8 @@ class Tab extends BaseElement
         return $tabItemElements;
     }
 
-    public function getHolderTemplates()
+    public function ElementHolderTemplate()
     {
-        return [
-            'type' => 'TheHustle/Elemental/TabElementHolder'
-        ];
+        return 'TheHustle/Elemental/TabElementHolder';
     }
 }
