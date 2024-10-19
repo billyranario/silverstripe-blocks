@@ -18,6 +18,7 @@ class Accordion extends BaseElement
     private static string $singular_name = 'Accordion Container';
     private static string $plural_name = 'Accordion Containers';
     private static string $icon = 'font-icon-block-file-list';
+    private static $controller_template = 'AccordionElementHolder';
 
     private static $db = [
         'Title' => DBVarchar::class,
@@ -107,10 +108,5 @@ class Accordion extends BaseElement
         }
 
         return $accordionItemElements;
-    }
-
-    public function ElementHolderTemplate()
-    {
-        return 'TheHustle/Elemental/AccordionElementHolder';
     }
 }

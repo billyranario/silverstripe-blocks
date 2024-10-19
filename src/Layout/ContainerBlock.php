@@ -18,6 +18,7 @@ class ContainerBlock extends BaseElement
     private static string $singular_name = 'Container Block';
     private static string $plural_name = 'Container Blocks';
     private static string $icon = 'font-icon-block-file-list';
+    private static $controller_template = 'ContainerElementHolder';
 
     private static $db = [
         'CSSClass' => DBVarchar::class,
@@ -79,10 +80,5 @@ class ContainerBlock extends BaseElement
     public function inlineEditable(): bool
     {
         return false;
-    }
-
-    public function ElementHolderTemplate()
-    {
-        return 'TheHustle/Elemental/ContainerElementHolder';
     }
 }

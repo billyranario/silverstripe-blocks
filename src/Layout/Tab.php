@@ -18,6 +18,7 @@ class Tab extends BaseElement
     private static string $singular_name = 'Tab Container';
     private static string $plural_name = 'Tab Containers';
     private static string $icon = 'font-icon-block-file-list';
+    private static $controller_template = 'TabElementHolder';
 
     private static $db = [
         'Title' => DBVarchar::class,
@@ -92,10 +93,5 @@ class Tab extends BaseElement
         }
     
         return $tabItemElements;
-    }
-
-    public function ElementHolderTemplate()
-    {
-        return 'TheHustle/Elemental/TabElementHolder';
     }
 }
