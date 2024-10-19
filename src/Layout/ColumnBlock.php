@@ -19,6 +19,7 @@ class ColumnBlock extends BaseElement
     private static string $singular_name = 'Column Block';
     private static string $plural_name = 'Column Blocks';
     private static string $icon = 'font-icon-block-file-list';
+    private static $controller_template = 'ColumnElementHolder';
 
     private static $db = [
         'CSSClass' => DBVarchar::class,
