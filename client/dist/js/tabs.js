@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (index === 0) {
         tab.classList.add("bg-primary-dark");
         tab.classList.remove("hover:text-dark-gray");
-        tabContents[index].classList.remove("hide");
+        tabContents[index]?.classList?.remove("hide");
       }
     });
   });
