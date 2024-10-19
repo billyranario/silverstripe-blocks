@@ -90,4 +90,10 @@ class Tab extends BaseElement
         return $tabItemElements;
     }
 
+    public function getHolderTemplates()
+    {
+        return [
+            'type' => 'TheHustle/Elemental/TabElementHolder'
+        ];
+    }
 }

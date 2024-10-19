@@ -76,4 +76,11 @@ class ContainerBlock extends BaseElement
     {
         return false;
     }
+
+    public function getHolderTemplates()
+    {
+        return [
+            'type' => 'TheHustle/Elemental/ContainerElementHolder'
+        ];
+    }
 }

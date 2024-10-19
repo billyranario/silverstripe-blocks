@@ -104,4 +104,11 @@ class Accordion extends BaseElement
 
         return $accordionItemElements;
     }
+
+    public function getHolderTemplates()
+    {
+        return [
+            'type' => 'TheHustle/Elemental/AccordionElementHolder'
+        ];
+    }
 }
