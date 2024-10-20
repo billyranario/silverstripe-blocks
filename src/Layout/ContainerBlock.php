@@ -23,6 +23,8 @@ class ContainerBlock extends BaseElement
     private static $db = [
         'CSSClass' => DBVarchar::class,
         'NoGutters' => DBBoolean::class,
+        'FullWidth' => DBBoolean::class,
+
     ];
 
     private static $has_one = [
